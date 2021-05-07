@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['clasification', 2014]">Spain</a>
+      <a mat-list-item [routerLink]="['clasification', 2021]">England</a>
+      <a mat-list-item [routerLink]="['clasification', 2081]">France</a>
+      <a mat-list-item [routerLink]="['clasification', 2019]">Italy</a>
+      <a mat-list-item [routerLink]="['clasification', 2002]">Germany</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>ftbll-data</span>
+    </mat-toolbar>
+    <app-dashboard></app-dashboard>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

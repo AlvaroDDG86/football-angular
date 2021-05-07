@@ -1,0 +1,24 @@
+.content-last {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result {
+  width: 25px;
+  height: 20px;
+  border-radius: 50%;
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+.win-color {
+  background-color: green
+}
+.draw-clor {
+  background-color: orange
+}
+.lost-color {
+  background-color: red
+}

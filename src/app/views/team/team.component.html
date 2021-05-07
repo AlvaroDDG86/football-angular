@@ -1,0 +1,37 @@
+<mat-card class="example-card" *ngIf="$team | async as team">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{team.name}}</mat-card-title>
+    <mat-card-subtitle>{{team.website}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="content-team">
+    <mat-card class="player-card" *ngFor="let player of team.squad">
+      <mat-card-header>
+        <mat-card-title>{{player.name}}</mat-card-title>
+        <mat-card-subtitle>{{player.dateOfBirth | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{player.position}}
+        </p>
+        <p class="player-nationality">
+          <img
+          class="flag-player"
+          [src]="'https://flagcdn.com/32x24/' + getFlag(player.nationality) + '.png'"
+          width="32"
+          height="24"
+          [alt]="player.nationality">
+          {{player.nationality}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

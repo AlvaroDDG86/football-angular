@@ -1,0 +1,28 @@
+.content-team {
+  display: flex;
+  margin-bottom: 16px;
+  flex-direction: row;
+  align-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player-card {
+  min-width: 280px;
+  max-width: 280px;
+  min-height: 165px;
+  margin-bottom: 10px;
+}
+
+.player-nationality {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 700px){
+  .player-card {
+    max-width: 100%;
+  }
+}

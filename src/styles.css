@@ -1,1 +1,32 @@
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.position {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.green {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(30,150,0,1) 0%, rgba(255,255,255,1) 100%) !important;
+}
+
+.blue {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,139,150,1) 0%, rgba(255,255,255,1) 100%) !important;
+}
+
+.orange {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(240,173,2,1) 0%, rgba(255,255,255,1) 100%) !important;
+}
+
+.red {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(240,2,59,1) 0%, rgba(255,255,255,1) 100%) !important;
+}
+
+.gray {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(151, 151, 151) 0%, rgba(255,255,255,1) 100%) !important;
+}

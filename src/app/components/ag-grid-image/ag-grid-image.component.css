@@ -1,0 +1,19 @@
+.team-component {
+  position: relative;
+}
+
+.team-img {
+  width: 50px;
+  position: absolute;
+  top: 0px;
+  left: -4px;
+  transform: rotate(340deg);
+  opacity: .7;
+}
+
+.team-name {
+  position: absolute;
+  right: 3px;
+  font-size: 14px;
+  font-weight: bold;
+}
