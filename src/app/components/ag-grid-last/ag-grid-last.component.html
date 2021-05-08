@@ -1,5 +1,9 @@
 <div class="content-last">
-  <span *ngFor="let item of last" class="result" [ngClass]="getClass(item.value)">
-    {{item.value}}
-  </span>
+  <div *ngFor="let item of last" class="result" [ngClass]="getClass(item.value)">
+    <container-element [ngSwitch]="item.value">
+      <mat-icon *ngSwitchCase="'W'" aria-hidden="false" aria-label="Example home icon">mood</mat-icon>
+      <mat-icon *ngSwitchCase="'D'" aria-hidden="false" aria-label="Example home icon">remove_circle_outline</mat-icon>
+      <mat-icon *ngSwitchCase="'L'" aria-hidden="false" aria-label="Example home icon">mood_bad</mat-icon>
+    </container-element>
+  </div>
 </div>

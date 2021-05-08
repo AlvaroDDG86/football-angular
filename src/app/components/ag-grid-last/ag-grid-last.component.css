@@ -5,20 +5,19 @@
 }
 
 .result {
-  width: 25px;
+  width: 20px;
   height: 20px;
   border-radius: 50%;
-  color: white;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: bold;
 }
 
 .win-color {
-  background-color: green
+  color: green
 }
 .draw-clor {
-  background-color: orange
+  color: orange
 }
 .lost-color {
-  background-color: red
+  color: red
 }

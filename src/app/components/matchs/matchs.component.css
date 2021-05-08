@@ -1,0 +1,65 @@
+.matches {
+  padding: 5px;
+}
+
+.match-item {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  box-shadow:  0px 3px 3px rgb(0 0 0 / 16%), 2px 1px 6px rgb(0 0 0 / 36%);
+  border-radius: 10px;
+  padding: 3px;
+  overflow: hidden;
+  height: 70px;
+  min-width: 280px;
+}
+
+.match-item-team {
+  position: relative;
+  flex-basis:33.33%;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgb(58, 58, 58);
+  z-index: 1;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.match-item-team--left {
+  text-align: right;
+}
+
+.match-item-team--right {
+  text-align: left;
+}
+
+.match-item-info {
+  flex-basis:33.33%;
+  color: rgb(56, 56, 56);
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+}
+
+.match-item-score {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.match-item-image {
+  width: 80px;
+  position: absolute;
+  top: -25px;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.match-item-image--left {
+  transform: rotate(340deg);
+  left: 2px;
+}
+
+.match-item-image--right {
+  transform: rotate(20deg);
+  right: 2px;
+}

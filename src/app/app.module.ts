@@ -27,6 +27,7 @@ import { ClasificationComponent } from './views/clasification/clasification.comp
 import { AgGridImageComponent } from './components/ag-grid-image/ag-grid-image.component';
 import { TeamComponent } from './views/team/team.component';
 import { AgGridLastComponent } from './components/ag-grid-last/ag-grid-last.component';
+import { MatchsComponent } from './components/matchs/matchs.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AgGridLastComponent } from './components/ag-grid-last/ag-grid-last.comp
     ClasificationComponent,
     AgGridImageComponent,
     TeamComponent,
-    AgGridLastComponent
+    AgGridLastComponent,
+    MatchsComponent
   ],
   imports: [
     AppRoutingModule,

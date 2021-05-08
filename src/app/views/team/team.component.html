@@ -1,10 +1,19 @@
-<mat-card class="example-card" *ngIf="$team | async as team">
+<mat-card class="example-card" *ngIf="$team | async as team" [style.background-image]="getBackground(team.clubColors)">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{team.name}}</mat-card-title>
-    <mat-card-subtitle>{{team.website}}</mat-card-subtitle>
+    <mat-card-title>{{team.name}} <small>{{team.founded}}</small></mat-card-title>
+    <mat-card-subtitle>{{team.venue}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="content-team">
+    <div class="team-info">
+      <div [style.background-image]="getBackground(team.clubColors)">{{team.address}}</div>
+      <!-- <div [ngStyle]="{'background-image' : getBackground(team.clubColors)}">{{team.address}}</div> -->
+      <div>{{team.phone}}</div>
+      <div>{{team.website}}</div>
+      <div>{{team.email}}</div>
+      {{getBackground(team.clubColors) | json}}
+      <!-- <pre>{{team | json}}</pre> -->
+    </div>
     <mat-card class="player-card" *ngFor="let player of team.squad">
       <mat-card-header>
         <mat-card-title>{{player.name}}</mat-card-title>
@@ -24,10 +33,6 @@
           {{player.nationality}}
         </p>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
     </mat-card>
   </mat-card-content>
   <mat-card-actions>

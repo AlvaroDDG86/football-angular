@@ -26,4 +26,10 @@ export class TeamComponent implements OnInit {
   getFlag(name: string) {
     return this.flagsService.getCountryKey(name);
   }
+
+  getBackground(colors: string) {
+    let [ colorFrom, colorTo ] = colors.split('/')
+    return `linear-gradient(to right, white, purple) !important;`
+    // return `linear-gradient(to right, ${colorFrom.trim().toLowerCase()} , ${colorTo.trim().toLowerCase()});`
+  }
 }

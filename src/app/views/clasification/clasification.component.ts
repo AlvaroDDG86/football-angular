@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatMap } from 'rxjs/operators';
+import { concatMap, tap } from 'rxjs/operators';
 import { AgGridImageComponent } from 'src/app/components/ag-grid-image/ag-grid-image.component';
 import { HttpService } from 'src/app/services/http.service';
 import DATA from '../../back/standings'
 import { AgGridLastComponent } from '../../components/ag-grid-last/ag-grid-last.component';
+import { PositionsService } from '../../services/positions.service';
 
 @Component({
   selector: 'app-clasification',
@@ -20,26 +21,15 @@ export class ClasificationComponent implements OnInit {
   };
   selectedMatchDay: number;
   matchDays: any[] = [];
-  shields: any[]
+  shields: any[];
+  league: any;
+  matches: any[];
 
   columnDefs = [
     { headerName: '', field: 'position', width: 60, pinned: 'left',
-      cellClass: params => {
-        switch(true) {
-          case params.value < 5:
-            return 'position green';
-          case params.value < 7 && params.value > 4:
-            return 'position blue';
-          case params.value === 7:
-            return 'position orange';
-          case params.value > 17:
-            return 'position red';
-          case params.value > 7 && params.value < 18:
-            return 'position gray';
-        }
-      }
+      cellClass: params => this.positionsService.getColorPosition(params.value, this.league.code)
     },
-    { headerName: 'Team', field: 'team.crestUrl', cellRenderer: 'agGridImage', pinned: 'left' },
+    { headerName: 'Team', field: 'team.crestUrl', cellRenderer: 'agGridImage', pinned: 'left', width: 250 },
     { headerName: 'Points', field: 'points', width: 80,
       cellStyle: { color: 'gray', 'font-weight': 'bold'}
     },
@@ -55,7 +45,8 @@ export class ClasificationComponent implements OnInit {
   rowData = [];
   constructor(private httpService: HttpService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private positionsService: PositionsService) { }
 
   ngOnInit(): void {
     let day = 1
@@ -68,16 +59,19 @@ export class ClasificationComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.httpService.getStandings(params.id).pipe(
         concatMap((res: any) => {
+          this.selectedMatchDay = res.season.currentMatchday;
+          this.league = res.competition;
           this.rowData = res.standings[0].table
           this.shields = this.rowData.map((pos: any) => {
             const { team } = pos;
             return { team: team.id, shield: team.crestUrl }
           })
-          console.log(this.shields)
-          return this.httpService.getMatches(params.id, res.season.currentMatchday)
+          return this.httpService.getMatches(params.id, this.selectedMatchDay)
         })
-      ).subscribe(res => {
-        console.log(res)
+      ).pipe(
+        tap(this.setShields)
+      ).subscribe((res: any) => {
+        this.matches = res.matches
       })
     })
   }
@@ -86,4 +80,18 @@ export class ClasificationComponent implements OnInit {
     this.router.navigate([`/team/${event.data.team.id}`]);
   }
 
+  currentDayChange(event: any) {
+    this.httpService.getMatches(this.league.id, event).pipe(
+      tap(this.setShields)
+    ).subscribe(res => {
+      this.matches = res.matches
+    })
+  }
+
+  setShields = (res: any) => {
+    res.matches.forEach(match => {
+      match.awayTeam.crestUrl = this.shields.find(shield => shield.team === match.awayTeam.id).shield
+      match.homeTeam.crestUrl = this.shields.find(shield => shield.team === match.homeTeam.id).shield
+    })
+  }
 }
