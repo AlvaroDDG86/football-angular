@@ -28,6 +28,8 @@ import { AgGridImageComponent } from './components/ag-grid-image/ag-grid-image.c
 import { TeamComponent } from './views/team/team.component';
 import { AgGridLastComponent } from './components/ag-grid-last/ag-grid-last.component';
 import { MatchsComponent } from './components/matchs/matchs.component';
+import { PlayerComponent } from './components/player/player.component';
+import { PlayerListItemComponent } from './components/player-list-item/player-list-item.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { MatchsComponent } from './components/matchs/matchs.component';
     AgGridImageComponent,
     TeamComponent,
     AgGridLastComponent,
-    MatchsComponent
+    MatchsComponent,
+    PlayerComponent,
+    PlayerListItemComponent
   ],
   imports: [
     AppRoutingModule,

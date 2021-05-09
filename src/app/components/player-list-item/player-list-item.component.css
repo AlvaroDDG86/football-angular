@@ -1,0 +1,19 @@
+.player-list {
+  position: relative;
+  padding: 6px;
+  margin: 6px;
+  border-radius: 10px;
+  box-shadow:  -1px 1px 4px #0000003b, 0px 7px 7px #0000004d;
+  min-width: 140px;
+  min-height: 140px;
+  overflow: hidden;
+  background: white;
+}
+
+.player-list-flag{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transform: rotate(340deg) scale(2.5);
+  opacity: .6;
+}

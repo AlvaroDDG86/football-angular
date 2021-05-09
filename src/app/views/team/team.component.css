@@ -1,11 +1,47 @@
+.team-card {
+  position: relative;
+  overflow: hidden;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .content-team {
-  display: flex;
   margin-bottom: 16px;
-  flex-direction: row;
-  align-content: space-around;
+  position: relative;
+}
+
+.team-info {
+  background: #ada6a69c;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.mat-card-header .mat-card-title {
+  font-size: 35px;
+  text-align: center;
+}
+
+.squad-position {
+  overflow: hidden;
+  margin: 10px;
+  padding: 10px;
+  background: #ada6a69c;
+  border-radius: 10px;
+}
+
+.squad-position-title {
+  text-align: center;
+  font-size: 1.3em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.squad-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .player-card {

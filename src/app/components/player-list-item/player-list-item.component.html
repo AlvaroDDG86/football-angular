@@ -1,0 +1,25 @@
+<div class="player-list">
+
+  <h4>
+    {{player.name}} <br/>
+    <small>{{player.dateOfBirth | date}}</small>
+  </h4>
+  <div *ngIf="player.role === 'COACH' || player.role === 'ASSISTANT_COACH'; else playerInfo">
+    {{player.role}}
+  </div>
+  <ng-template #playerInfo>
+    {{player.position}}
+  </ng-template>
+  <p>
+    From: {{player.countryOfBirth}}
+  </p>
+  <p>
+    Nat: {{player.nationality}}
+  </p>
+  <img
+    class="player-list-flag"
+    [src]="'https://flagcdn.com/32x24/' + getFlag(player.nationality) + '.png'"
+    width="32"
+    height="24"
+    [alt]="player.nationality">
+</div>
