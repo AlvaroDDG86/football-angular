@@ -6,14 +6,14 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['clasification', 2014]">Spain</a>
-      <a mat-list-item [routerLink]="['clasification', 2021]">England</a>
+      <!-- <a mat-list-item [routerLink]="['clasification', 2021]">England</a> -->
       <a mat-list-item [routerLink]="['clasification', 2015]">France</a>
       <a mat-list-item [routerLink]="['clasification', 2019]">Italy</a>
       <a mat-list-item [routerLink]="['clasification', 2002]">Germany</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" [style.background]="colours ? colours.background : 'black'" [style.color]="colours ? colours.color : 'white'">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -22,7 +22,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ftbll-data</span>
+      <span>{{infoLeague}}</span>
     </mat-toolbar>
     <app-dashboard></app-dashboard>
     <!-- Add Content Here -->

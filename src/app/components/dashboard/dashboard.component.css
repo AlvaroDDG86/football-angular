@@ -19,3 +19,8 @@
 .dashboard-card-content {
   text-align: center;
 }
+@media (max-width: 840px){
+  .grid-container {
+    margin: 0px;
+  }
+}

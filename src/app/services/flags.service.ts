@@ -43,7 +43,7 @@ const COUNTRIES = {
   "Central African Republic": "cf",
   "Republic of the Congo": "cg",
   "Switzerland": "ch",
-  "Côte d'Ivoire (Ivory Coast)": "ci",
+  "Côte d’Ivoire": "ci",
   "Cook Islands": "ck",
   "Chile": "cl",
   "Cameroon": "cm",
@@ -78,10 +78,10 @@ const COUNTRIES = {
   "France": "fr",
   "Gabon": "ga",
   "United Kingdom": "gb",
-  "England": "gb-en",
-  "Northern Ireland": "gb-ni",
-  "Scotland": "gb-sc",
-  "Wales": "gb-wl",
+  "England": "gb-eng",
+  "Northern Ireland": "gb-nir",
+  "Scotland": "gb-sct",
+  "Wales": "gb-wls",
   "Grenada": "gd",
   "Georgia": "ge",
   "French Guiana": "gf",
@@ -107,6 +107,7 @@ const COUNTRIES = {
   "Hungary": "hu",
   "Indonesia": "id",
   "Ireland": "ie",
+  "Republic of Ireland": "ie",
   "Israel": "il",
   "Isle of Man": "im",
   "India": "in",
@@ -306,7 +307,6 @@ const COUNTRIES = {
   "Zambia": "zm",
   "Zimbabwe": "zw"
 }
-
 @Injectable({
   providedIn: 'root'
 })

@@ -7,6 +7,8 @@ import { HttpService } from 'src/app/services/http.service';
 import DATA from '../../back/standings'
 import { AgGridLastComponent } from '../../components/ag-grid-last/ag-grid-last.component';
 import { PositionsService } from '../../services/positions.service';
+import{ GlobalConstants } from '../../common/global-constants'
+import { InfoLeagueService } from 'src/app/services/info-league.service';
 
 @Component({
   selector: 'app-clasification',
@@ -46,20 +48,25 @@ export class ClasificationComponent implements OnInit {
   constructor(private httpService: HttpService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private positionsService: PositionsService) { }
+    private positionsService: PositionsService,
+    private infoLeagueService: InfoLeagueService) { }
 
   ngOnInit(): void {
-    let day = 1
-    do {
-      this.matchDays.push({
-        value: day, viewValue: `Matchday ${day}`
-      })
-      day++
-    } while (day <= 40);
+
     this.activatedRoute.params.subscribe(params => {
       this.httpService.getStandings(params.id).pipe(
         concatMap((res: any) => {
-          this.selectedMatchDay = res.season.currentMatchday;
+          let day = 1
+          this.matchDays = []
+          do {
+            this.matchDays.push({
+              value: day, viewValue: `Matchday ${day}`
+            })
+            day++
+          } while (day <= GlobalConstants.matchDays[res.competition.id]);
+          this.infoLeagueService.setInfoLeague(`${res.competition.name} | ${res.competition.area.name}`)
+          this.infoLeagueService.setInfoColours(null)
+          this.selectedMatchDay = res.season.currentMatchday ? res.season.currentMatchday : 1;
           this.league = res.competition;
           this.rowData = res.standings[0].table
           this.shields = this.rowData.map((pos: any) => {

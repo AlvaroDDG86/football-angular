@@ -1,10 +1,7 @@
 .team-card {
   position: relative;
-  overflow: hidden;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  font-family: 'Orbitron', sans-serif;
+  min-width: 325px;
 }
 
 .content-team {
@@ -12,10 +9,62 @@
   position: relative;
 }
 
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
 .team-info {
-  background: #ada6a69c;
-  padding: 20px;
-  border-radius: 10px;
+  display: flex;
+  align-content: space-around;
+  justify-content: space-between;
+  gap: 10px;
+  position: -webkit-sticky; /* Safari & IE */
+  position: sticky;
+  top: 64px;
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 10;
+}
+
+.team-data {
+  padding: 10px;
+}
+
+.team-info-detail {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 50px;
+}
+
+.team-info-img {
+  max-width: 150px;
+}
+
+.team-info-img--small {
+  width: 90px;
+  display: none;
+}
+
+.team-info-details > div{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-weight: bold;
+}
+
+.stadium-image {
+  width: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.team-info-details > div > mat-icon {
+  margin-right: 15px;
 }
 
 .mat-card-header .mat-card-title {
@@ -35,9 +84,15 @@
   text-align: center;
   font-size: 1.3em;
   font-family: 'Orbitron', sans-serif;
+  color: white;
 }
 
 .squad-list {
+  background-image: url('../../../assets/images/grass.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -57,8 +112,36 @@
   gap: 12px;
 }
 
-@media (max-width: 700px){
+@media (max-width: 840px){
   .player-card {
     max-width: 100%;
+  }
+
+  .team-info {
+    top: 54px;
+    width: 100%;
+  }
+
+  .team-data {
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .team-data > h3 {
+    display: none;
+  }
+
+  .team-info-img--small {
+    display: initial;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .team-info-detail {
+    display: none;
   }
 }

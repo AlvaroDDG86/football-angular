@@ -1,62 +1,82 @@
-<mat-card class="team-card" *ngIf="$team | async as team" [style.background-image]="'url(' + team.crestUrl + ')'">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{team.name}}</mat-card-title>
-    <mat-card-subtitle>{{team.founded}}</mat-card-subtitle>
-  </mat-card-header>
+<mat-card class="team-card" *ngIf="$team | async as team" >
   <mat-card-content class="content-team">
-    <div class="team-info">
-      <div>{{team.venue}}</div>
-      {{getBackground(team.clubColors)}}
-      <div>{{team.address}}</div>
-      <div>{{team.phone}}</div>
-      <div>{{team.website}}</div>
-      <div>{{team.email}}</div>
-      {{getBackground(team.clubColors) | json}}
+    <div class="team-info" [style.background]="colorsService.getColors(team).background" [style.color]="colorsService.getColors(team).color">
+      <div class="team-data">
+        <img class="team-info-img--small" [src]="team.crestUrl" [alt]="team.name">
+        <h1>{{team.name}} <small>({{team.tla}})</small></h1>
+        <h3>Foundation: {{team.founded}}</h3>
+        <div class="team-info-detail">
+          <img class="team-info-img" [src]="team.crestUrl" [alt]="team.name">
+          <div class="team-info-details">
+            <div><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> {{team.venue}}</div>
+            <div><mat-icon aria-hidden="false" aria-label="Example home icon">location_on</mat-icon> {{team.address}}</div>
+            <div><mat-icon aria-hidden="false" aria-label="Example home icon">phone</mat-icon> {{team.phone}}</div>
+            <div><mat-icon aria-hidden="false" aria-label="Example home icon">phonelink</mat-icon> <a [href]="team.website" target="_blank" rel="noopener noreferrer">{{team.website}}</a></div>
+            <div><mat-icon aria-hidden="false" aria-label="Example home icon">mail</mat-icon> <a [href]="'mailto:' + team.email">{{team.email}}</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="stadium-image" [style.background-image]="'url(' + getStadium(team) + ')'">
+      </div>
     </div>
     <!-- <img
       class="team-shield"
       [src]="team.crestUrl"
       [alt]="team.name"> -->
-    <ng-container *ngIf="squad.Goalkeeper">
-      <div class="squad-position">
-        <h3 class="squad-position-title">
-          Goalkeepers
-        </h3>
-        <div class="squad-list">
-          <app-player-list-item [player]="player" *ngFor="let player of squad.Goalkeeper"></app-player-list-item>
+    <div class="squad-list">
+      <ng-container *ngIf="squad.null">
+        <div class="squad-position">
+          <h3 class="squad-position-title">
+            Staff
+          </h3>
+          <div class="squad-list">
+            <app-player-list-item [player]="player" *ngFor="let player of squad.null"></app-player-list-item>
+          </div>
         </div>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="squad.Defender">
-      <div class="squad-position">
-        <h3 class="squad-position-title">
-          Defenders
-        </h3>
-        <div class="squad-list">
-          <app-player-list-item [player]="player" *ngFor="let player of squad.Defender"></app-player-list-item>
+      </ng-container>
+      <ng-container *ngIf="squad.Goalkeeper">
+        <div class="squad-position">
+          <h3 class="squad-position-title">
+            Goalkeepers
+          </h3>
+          <div class="squad-list">
+            <app-player-list-item [player]="player" *ngFor="let player of squad.Goalkeeper"></app-player-list-item>
+          </div>
         </div>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="squad.Midfielder">
-      <div class="squad-position">
-        <h3 class="squad-position-title">
-          Midfielders
-        </h3>
-        <div class="squad-list">
-          <app-player-list-item [player]="player" *ngFor="let player of squad.Midfielder"></app-player-list-item>
+      </ng-container>
+      <ng-container *ngIf="squad.Defender">
+        <div class="squad-position">
+          <h3 class="squad-position-title">
+            Defenders
+          </h3>
+          <div class="squad-list">
+            <app-player-list-item [player]="player" *ngFor="let player of squad.Defender"></app-player-list-item>
+          </div>
         </div>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="squad.Attacker">
-      <div class="squad-position">
-        <h3 class="squad-position-title">
-          Attackers
-        </h3>
-        <div class="squad-list">
-          <app-player-list-item [player]="player" *ngFor="let player of squad.Attacker"></app-player-list-item>
+      </ng-container>
+      <ng-container *ngIf="squad.Midfielder">
+        <div class="squad-position">
+          <h3 class="squad-position-title">
+            Midfielders
+          </h3>
+          <div class="squad-list">
+            <app-player-list-item [player]="player" *ngFor="let player of squad.Midfielder"></app-player-list-item>
+          </div>
         </div>
-      </div>
-    </ng-container>
+      </ng-container>
+      <ng-container *ngIf="squad.Attacker">
+        <div class="squad-position">
+          <h3 class="squad-position-title">
+            Attackers
+          </h3>
+          <div class="squad-list">
+            <app-player-list-item [player]="player" *ngFor="let player of squad.Attacker"></app-player-list-item>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <mat-card-actions>
+      <button mat-button (click)="location.back()">BACK</button>
+    </mat-card-actions>
   </mat-card-content>
 </mat-card>

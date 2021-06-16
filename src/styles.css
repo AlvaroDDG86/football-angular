@@ -30,3 +30,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .gray {
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(151, 151, 151) 0%, rgba(255,255,255,1) 100%) !important;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(52, 53, 56);
+}

@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.team-component:hover {
+  cursor: pointer;
+}
+
 .team-img {
   width: 50px;
   position: absolute;
@@ -9,12 +13,23 @@
   left: -4px;
   transform: rotate(340deg);
   opacity: .7;
+  transition: .5s;
+}
+
+.team-component:hover > .team-img {
+  opacity: 1;
+  top: -5px;
+  transform: rotate(360deg) scale(1.1);
 }
 
 .team-name {
   position: absolute;
   right: 3px;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: bold;
   font-family: 'Orbitron', sans-serif;
+}
+
+@media (max-width: 700px){
+
 }

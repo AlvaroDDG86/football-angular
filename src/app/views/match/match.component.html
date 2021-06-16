@@ -1,0 +1,46 @@
+<div *ngIf="$match | async as current">
+  <mat-card class="match-card">
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>{{current.match.venue}}</mat-card-title>
+      <mat-card-subtitle>{{current.match.utcDate | date:'medium' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="match-result">
+        <div class="match-team">
+          <div class="match-team-shield">
+            <img [src]="'https://crests.football-data.org/' + current.match.homeTeam.id + '.svg'" alt="">
+          </div>
+          <div class="match-team-name match-team-name-left">
+            {{current.match.homeTeam.name}}
+          </div>
+        </div>
+        <div class="match-score">
+          {{current.match.score.fullTime.homeTeam}} -
+          {{current.match.score.fullTime.awayTeam}}
+        </div>
+        <div class="match-team match-team-right">
+          <div class="match-team-name match-team-name-right">
+            {{current.match.awayTeam.name}}
+          </div>
+          <div class="match-team-shield">
+            <img [src]="'https://crests.football-data.org/' + current.match.awayTeam.id + '.svg'" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="match-referee">
+        <h3>Referees:</h3>
+        <ng-container *ngFor="let referee of current.match.referees">
+          <div class="match-referee">
+            {{referee.name}}
+            <span class="match-referee-role">
+              {{referee.role}}
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="location.back()">BACK</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

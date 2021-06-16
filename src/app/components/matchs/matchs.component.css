@@ -16,6 +16,24 @@
   min-width: 280px;
 }
 
+.match-item:hover {
+  box-shadow:  0px 1px 1px rgb(0 0 0 / 16%), 1px 1px 3px rgb(0 0 0 / 36%);
+  cursor: pointer;
+}
+
+.match-item:hover .match-item-image {
+  opacity: 1;
+  width: 75px;
+}
+
+.match-item:hover .match-item-image--left {
+  transform: rotate(0deg);
+}
+
+.match-item:hover .match-item-image--right {
+  transform: rotate(0deg);
+}
+
 .match-item-team {
   position: relative;
   flex-basis:33.33%;
@@ -24,6 +42,7 @@
   color: rgb(58, 58, 58);
   z-index: 1;
   font-family: 'Orbitron', sans-serif;
+  transition: .5s;
 }
 
 .match-item-team--left {
@@ -52,14 +71,48 @@
   top: -25px;
   opacity: 0.6;
   z-index: -1;
+  transition: .5s;
 }
 
 .match-item-image--left {
-  transform: rotate(340deg);
+  transform: rotate(-20deg);
   left: 2px;
 }
 
 .match-item-image--right {
   transform: rotate(20deg);
   right: 2px;
+}
+
+@media (max-width: 840px){
+  .matches {
+    padding: 1px;
+  }
+
+  .match-item {
+    margin: 2px;
+  }
+
+  .match-item-image {
+    position: inherit;
+    opacity: 1;
+    transform: rotate(0);
+    width: 40px;
+    top: 0;
+  }
+
+  .match-item-name {
+    font-size: 0.7em;
+  }
+
+  .match-item-team {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .match-item-date {
+    font-size: 0.8em;
+  }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,6 +30,10 @@ import { AgGridLastComponent } from './components/ag-grid-last/ag-grid-last.comp
 import { MatchsComponent } from './components/matchs/matchs.component';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerListItemComponent } from './components/player-list-item/player-list-item.component';
+import { MatchComponent } from './views/match/match.component';
+import { HttpInterceptorInterceptor } from './interceptor/http-interceptor.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,8 @@ import { PlayerListItemComponent } from './components/player-list-item/player-li
     AgGridLastComponent,
     MatchsComponent,
     PlayerComponent,
-    PlayerListItemComponent
+    PlayerListItemComponent,
+    MatchComponent
   ],
   imports: [
     AppRoutingModule,
@@ -64,10 +69,15 @@ import { PlayerListItemComponent } from './components/player-list-item/player-li
     MatListModule,
     MatSelectModule,
     MatTabsModule,
+    MatSnackBarModule,
     RouterModule,
+    NgxSpinnerModule,
     AgGridModule.withComponents([])
   ],
-  providers: [AgGridImageComponent],
+  providers: [
+    AgGridImageComponent,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

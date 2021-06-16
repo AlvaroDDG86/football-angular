@@ -1,9 +1,9 @@
 <div class="matches">
   <ng-container *ngIf="matches">
-    <div *ngFor="let match of matches" class="match-item">
+    <div *ngFor="let match of matches" class="match-item" (click)="goToMatch(match)">
       <div class="match-item-team match-item-team--left">
         <img class="match-item-image match-item-image--left" [src]="match.homeTeam.crestUrl">
-        {{match.homeTeam.name}}
+        <span class="match-item-name">{{match.homeTeam.name}}</span>
       </div>
       <div class="match-item-info">
         <div class="match-item-date">
@@ -13,7 +13,7 @@
       </div>
       <div class="match-item-team match-item-team--right">
         <img class="match-item-image match-item-image--right" [src]="match.awayTeam.crestUrl">
-        {{match.awayTeam.name}}
+        <span class="match-item-name">{{match.awayTeam.name}}</span>
       </div>
     </div>
   </ng-container>

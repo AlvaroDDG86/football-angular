@@ -62,4 +62,10 @@ export class HttpService {
 
     return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/matches?matchday=${day}`, { headers })
   }
+
+  getMatch(match: string) {
+    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
+
+    return this.http.get(`${GlobalConstants.apiURL}matches/${match}`, { headers })
+  }
 }

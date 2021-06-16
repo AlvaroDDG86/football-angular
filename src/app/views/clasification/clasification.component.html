@@ -1,15 +1,17 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Standings">
-    <ag-grid-angular
-      [frameworkComponents]="frameworkComponents"
-      style="width: 100%; height: 80vh;"
-      class="ag-theme-alpine"
-      [rowData]="rowData"
-      [columnDefs]="columnDefs"
-      (rowClicked)="rowClicked($event)"
-    >
-    </ag-grid-angular>
+    <div class="standings-content">
+      <ag-grid-angular
+        [frameworkComponents]="frameworkComponents"
+        style="width: 930px; height: 80vh;"
+        class="ag-theme-alpine"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        (rowClicked)="rowClicked($event)"
+      >
+      </ag-grid-angular>
+    </div>
   </mat-tab>
   <mat-tab label="Results">
     <mat-form-field appearance="fill">
