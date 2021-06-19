@@ -24,7 +24,7 @@ import { AppRoutingModule } from './AppRoutingModule';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { AgGridModule } from 'ag-grid-angular';
-import { ClasificationComponent } from './views/clasification/clasification.component';
+import { StandingComponent } from './views/standing/standing.component';
 import { AgGridImageComponent } from './components/ag-grid-image/ag-grid-image.component';
 import { TeamComponent } from './views/team/team.component';
 import { AgGridLastComponent } from './components/ag-grid-last/ag-grid-last.component';
@@ -36,6 +36,7 @@ import { HttpInterceptorInterceptor } from './interceptor/http-interceptor.inter
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -43,14 +44,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NavigationComponent,
     DashboardComponent,
     MainComponent,
-    ClasificationComponent,
+    StandingComponent,
     AgGridImageComponent,
     TeamComponent,
     AgGridLastComponent,
     matchesComponent,
     PlayerComponent,
     PlayerListItemComponent,
-    MatchComponent
+    MatchComponent,
+    PageNotFoundComponent
   ],
   imports: [
     AppRoutingModule,
