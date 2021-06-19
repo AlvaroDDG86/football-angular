@@ -9,6 +9,7 @@ import { AgGridLastComponent } from '../../components/ag-grid-last/ag-grid-last.
 import { PositionsService } from '../../services/positions.service';
 import{ GlobalConstants } from '../../common/global-constants'
 import { InfoLeagueService } from 'src/app/services/info-league.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-clasification',
@@ -26,12 +27,15 @@ export class ClasificationComponent implements OnInit {
   shields: any[];
   league: any;
   matches: any[];
+  gridApi: any;
+  columnsApi: any;
+  tabSelected: number = 1;
 
   columnDefs = [
-    { headerName: '', field: 'position', width: 60, pinned: 'left',
+    { colId: 'pos', headerName: '', field: 'position', width: 50, pinned: 'left',cellStyle: {'margin-right': '-17px', 'border-right-width': '0px'},
       cellClass: params => this.positionsService.getColorPosition(params.value, this.league.code)
     },
-    { headerName: 'Team', field: 'team.crestUrl', cellRenderer: 'agGridImage', pinned: 'left', width: 250 },
+    { colId: 'team', headerName: 'Team', field: 'team.crestUrl', cellRenderer: 'agGridImage', pinned: 'left', width: 250 },
     { headerName: 'Points', field: 'points', width: 80,
       cellStyle: { color: 'gray', 'font-weight': 'bold'}
     },
@@ -81,6 +85,20 @@ export class ClasificationComponent implements OnInit {
         this.matches = res.matches
       })
     })
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.columnsApi = params.columnApi;
+    if (window.innerWidth < 650) {
+      this.columnsApi.setColumnWidth('team', 120)
+      this.columnsApi.setColumnWidth('pos', 30)
+    }
+  }
+
+  onResize(event) {
+    this.columnsApi.setColumnWidth('team', event.target.innerWidth < 650 ? 120 : 250)
+    this.columnsApi.setColumnWidth('pos', event.target.innerWidth < 650 ? 30 : 60)
   }
 
   rowClicked(event) {

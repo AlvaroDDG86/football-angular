@@ -1,5 +1,5 @@
 
-<mat-tab-group mat-align-tabs="center">
+<mat-tab-group mat-align-tabs="center" (window:resize)="onResize($event)" [(selectedIndex)]="tabSelected">
   <mat-tab label="Standings">
     <div class="standings-content">
       <ag-grid-angular
@@ -9,6 +9,7 @@
         [rowData]="rowData"
         [columnDefs]="columnDefs"
         (rowClicked)="rowClicked($event)"
+        (gridReady)="onGridReady($event)"
       >
       </ag-grid-angular>
     </div>
@@ -22,6 +23,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <app-matchs [matches]="matches"></app-matchs>
+    <app-matches [matches]="matches"></app-matches>
   </mat-tab>
 </mat-tab-group>

@@ -17,6 +17,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './views/main/main.component';
 import { AppRoutingModule } from './AppRoutingModule';
@@ -27,13 +28,14 @@ import { ClasificationComponent } from './views/clasification/clasification.comp
 import { AgGridImageComponent } from './components/ag-grid-image/ag-grid-image.component';
 import { TeamComponent } from './views/team/team.component';
 import { AgGridLastComponent } from './components/ag-grid-last/ag-grid-last.component';
-import { MatchsComponent } from './components/matchs/matchs.component';
+import { matchesComponent } from './components/matches/matches.component';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerListItemComponent } from './components/player-list-item/player-list-item.component';
 import { MatchComponent } from './views/match/match.component';
 import { HttpInterceptorInterceptor } from './interceptor/http-interceptor.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AgGridImageComponent,
     TeamComponent,
     AgGridLastComponent,
-    MatchsComponent,
+    matchesComponent,
     PlayerComponent,
     PlayerListItemComponent,
     MatchComponent
@@ -70,6 +72,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule,
     NgxSpinnerModule,
     AgGridModule.withComponents([])

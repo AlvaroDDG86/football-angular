@@ -93,6 +93,17 @@
     margin: 2px;
   }
 
+  .match-item:hover .match-item-image {
+    width: 200px;
+    opacity: 0.4;
+    position: absolute;
+    top: -80px;
+  }
+
+  .match-item:hover .match-item-name {
+    font-size: 1.1em;
+  }
+
   .match-item-image {
     position: inherit;
     opacity: 1;

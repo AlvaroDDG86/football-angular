@@ -26,6 +26,11 @@
   background-color: white;
   z-index: 1;
   padding: 10px;
+  box-shadow: -3px 0 3px rgba(128, 128, 128, 0.432), -5px 0px 6px #544e4e69;
+}
+
+.match-team-shield--right {
+  box-shadow: 3px 0 3px rgba(128, 128, 128, 0.432), 5px 0px 6px #544e4e69;
 }
 
 .match-team-shield > img {
@@ -45,7 +50,7 @@
   margin-left: -45px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  box-shadow: -3px 0 3px grey, -5px 0px 6px #544e4e;
+  box-shadow: -3px 0 3px rgba(128, 128, 128, 0.432), -5px 0px 6px #544e4e69;
 }
 
 .match-team-name-right {
@@ -54,7 +59,7 @@
   text-align: right;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  box-shadow: 3px 0 3px grey, 5px 0px 6px #544e4e;
+  box-shadow: 3px 0 3px rgba(128, 128, 128, 0.432), 5px 0px 6px #544e4e69;
 }
 
 .match-score {
@@ -87,6 +92,7 @@
   .match-team-shield {
     border: none;
     background-color: transparent;
+    box-shadow: none;
   }
 
   .match-team-name {
