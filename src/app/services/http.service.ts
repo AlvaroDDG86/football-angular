@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import{ GlobalConstants } from '../common/global-constants';
 import { map } from 'rxjs/operators';
@@ -14,15 +14,11 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getLeague(league: number) {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/teams`, { headers })
+    return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/teams`)
   }
 
   getTeam(team: number): Observable<Team> {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}teams/${team}`, { headers }).pipe(
+    return this.http.get(`${GlobalConstants.apiURL}teams/${team}`).pipe(
       map((data: Team) => {
         data.squad = data.squad.sort(this.sortByPosition)
         return data
@@ -40,32 +36,22 @@ export class HttpService {
   }
 
   getPlayer(player: number) {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}players/${player}`, { headers })
+    return this.http.get(`${GlobalConstants.apiURL}players/${player}`)
   }
 
   getStandings(league: number) {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/standings`, { headers })
+    return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/standings`)
   }
 
   getCompetitions() {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}competitions`, { headers })
+    return this.http.get(`${GlobalConstants.apiURL}competitions`)
   }
 
   getMatches(league: number, day: number) {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/matches?matchday=${day}`, { headers })
+    return this.http.get(`${GlobalConstants.apiURL}competitions/${league}/matches?matchday=${day}`)
   }
 
   getMatch(match: string) {
-    const headers = new HttpHeaders({'X-Auth-Token': GlobalConstants.apiKey});
-
-    return this.http.get(`${GlobalConstants.apiURL}matches/${match}`, { headers })
+    return this.http.get(`${GlobalConstants.apiURL}matches/${match}`)
   }
 }

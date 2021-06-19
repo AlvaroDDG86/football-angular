@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
+import{ GlobalConstants } from '../common/global-constants';
+
 import {
   HttpRequest,
   HttpHandler,
@@ -20,7 +22,10 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.spinner.show();
-    return next.handle(request).pipe(
+    const modifiedReq = request.clone({
+      headers: request.headers.set('X-Auth-Token', GlobalConstants.apiKey),
+    });
+    return next.handle(modifiedReq).pipe(
       catchError((error: HttpErrorResponse) => {
         const errorMsg = (error.error instanceof ErrorEvent) ?
           `Error: ${error.error.message}` :
