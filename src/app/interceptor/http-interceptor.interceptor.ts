@@ -29,7 +29,7 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         const errorMsg = (error.error instanceof ErrorEvent) ?
           `Error: ${error.error.message}` :
-          `Error Code: ${error.status},  Message: ${error.message}`;
+          `Error: We use https://api.football-data.org and only have access to the API 10 times per minute... `;
           this._snackBar.open(errorMsg, 'Wait a minute', {
             duration: 2000,
             horizontalPosition: this.horizontalPosition,

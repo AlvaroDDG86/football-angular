@@ -7,6 +7,24 @@
   justify-content: center;
 }
 
+.mat-tab-group {
+  background-color: white;
+  border-radius: 5px;
+}
+
 .mat-form-field {
   width: 100%;
+  background-color: white;
+}
+
+.standings-grid {
+  max-width: 760px;
+  width: 70vw;
+  height: 80vh;
+}
+
+@media (max-width: 840px){
+  .standings-grid {
+    width: 100vw;
+  }
 }

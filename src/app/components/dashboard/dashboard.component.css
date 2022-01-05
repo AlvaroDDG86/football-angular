@@ -1,5 +1,6 @@
 .grid-container {
   margin: 20px;
+  background-color: rgba(0, 0, 0, 0.466);
 }
 
 .dashboard-card {

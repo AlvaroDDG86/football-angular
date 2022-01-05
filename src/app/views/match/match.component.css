@@ -27,6 +27,9 @@
   z-index: 1;
   padding: 10px;
   box-shadow: -3px 0 3px rgba(128, 128, 128, 0.432), -5px 0px 6px #544e4e69;
+  overflow: hidden;
+  width: 100px;
+  text-align: center;
 }
 
 .match-team-shield--right {

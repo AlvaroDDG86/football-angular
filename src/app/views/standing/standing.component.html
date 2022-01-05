@@ -4,8 +4,7 @@
     <div class="standings-content">
       <ag-grid-angular
         [frameworkComponents]="frameworkComponents"
-        style="width: 930px; height: 80vh;"
-        class="ag-theme-alpine"
+        class="ag-theme-alpine standings-grid"
         [rowData]="rowData"
         [columnDefs]="columnDefs"
         (rowClicked)="rowClicked($event)"
@@ -15,7 +14,7 @@
     </div>
   </mat-tab>
   <mat-tab label="Results">
-    <mat-form-field appearance="fill">
+    <mat-form-field MatFormFieldControl appearance="fill">
       <mat-label>Match Day</mat-label>
       <mat-select [(ngModel)]="selectedMatchDay" (ngModelChange)="currentDayChange($event)" name="day" *ngIf="matchDays.length > 0">
         <mat-option *ngFor="let day of matchDays" [value]="day.value">

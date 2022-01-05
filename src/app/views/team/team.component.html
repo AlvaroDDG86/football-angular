@@ -13,6 +13,7 @@
             <div><mat-icon aria-hidden="false" aria-label="Example home icon">phone</mat-icon> {{team.phone}}</div>
             <div><mat-icon aria-hidden="false" aria-label="Example home icon">phonelink</mat-icon> <a [href]="team.website" target="_blank" rel="noopener noreferrer">{{team.website}}</a></div>
             <div><mat-icon aria-hidden="false" aria-label="Example home icon">mail</mat-icon> <a [href]="'mailto:' + team.email">{{team.email}}</a></div>
+            {{offsetFlag}}
           </div>
         </div>
       </div>

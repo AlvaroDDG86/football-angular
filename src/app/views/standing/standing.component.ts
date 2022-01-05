@@ -4,12 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { concatMap, tap } from 'rxjs/operators';
 import { AgGridImageComponent } from 'src/app/components/ag-grid-image/ag-grid-image.component';
 import { HttpService } from 'src/app/services/http.service';
-import DATA from '../../back/standings'
-import { AgGridLastComponent } from '../../components/ag-grid-last/ag-grid-last.component';
 import { PositionsService } from '../../services/positions.service';
 import{ GlobalConstants } from '../../common/global-constants'
 import { InfoLeagueService } from 'src/app/services/info-league.service';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-standing',
@@ -19,8 +16,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class StandingComponent implements OnInit {
   id: any;
   frameworkComponents = {
-    agGridImage: AgGridImageComponent,
-    agGridLast: AgGridLastComponent
+    agGridImage: AgGridImageComponent
   };
   selectedMatchDay: number;
   matchDays: any[] = [];
@@ -44,8 +40,7 @@ export class StandingComponent implements OnInit {
     { headerName: 'PE', field: 'draw', width: 60 },
     { headerName: 'PP', field: 'lost', width: 60 },
     { headerName: 'GF', field: 'goalsFor', width: 60 },
-    { headerName: 'GC', field: 'goalsAgainst', width: 60 },
-    { headerName: 'Last 5', field: 'form', cellRenderer: 'agGridLast', width: 160 }
+    { headerName: 'GC', field: 'goalsAgainst', width: 60 }
   ];
 
   rowData = [];

@@ -1,6 +1,5 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -19,6 +18,7 @@ export class TeamComponent implements OnInit {
   $team: Observable<any>;
   id: any;
   squad: any[];
+  offsetFlag: boolean = true;
 
   constructor(private httpService: HttpService,
       private flagsService: FlagsService,
